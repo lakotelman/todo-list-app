@@ -32,9 +32,8 @@ formEl.addEventListener("submit", (event) => {
       itemEl.addEventListener("click", (event) => {
         if (itemEl.style.textDecoration != "line-through") {
           itemEl.style.textDecoration = "line-through";
-        }
-        else{ 
-          itemEl.style.textDecoration = "none"
+        } else {
+          itemEl.style.textDecoration = "none";
         }
       });
     }
@@ -44,9 +43,14 @@ formEl.addEventListener("submit", (event) => {
     i++;
   }
 });
+//somehow dismiss the individual list
+let dismissList = document.getElementById("toDoDone");
+clearButton.addEventListener("click", (event) => {
+  console.log("Button clicked");
+});
 
-let clearButton = document.getElementById('clearButton');
-clearButton.addEventListener('click', (event) => {
-    console.log('Button clicked')
-    listEl.innerHTML = ''
-})
+let clearButton = document.getElementById("clearButton");
+clearButton.addEventListener("click", (event) => {
+  console.log("Button clicked");
+  listEl.innerHTML = "";
+});

@@ -61,6 +61,7 @@ clearButton.addEventListener("click", (event) => {
 // let huh = JSON.parse(localStorage.getItem('storageKey'))
 for (let entry of JSON.parse(localStorage.getItem("storageKey"))) {
   console.log(entry);
+  localStorage.clear()
   formEl.innerHTML += entry;
 }
 
