@@ -53,18 +53,16 @@ formEl.addEventListener("submit", (event) => {
 
 let clearButton = document.getElementById("clearButton");
 clearButton.addEventListener("click", (event) => {
-  console.log("Button clicked");
-  listEl.innerHTML = "";
   localStorage.clear();
+  listEl.innerHTML = "";
 });
 
-let dismissList = document.getElementById("toDoDone");
-clearButton.addEventListener("click", (event) => {
-  console.log("Button clicked");
-});
-
-// let huh = JSON.parse(localStorage.getItem('storageKey'))
-for (let entry of allEntries) {
-  console.log(entry);
-  formEl.innerHTML += entry;
+// let dismissList = document.getElementById("toDoDone");
+// clearButton.addEventListener("click", (event) => {
+  //   console.log("Button clicked");
+  // });
+  
+  for (let entry of allEntries) {
+    console.log(entry);
+    formEl.innerHTML += entry;
 }
