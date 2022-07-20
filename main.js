@@ -1,4 +1,8 @@
 let i = 0;
+let allEntries = [];
+if (localStorage.getItem("storageKey")) {
+  allEntries = JSON.parse(localStorage.getItem("storageKey"));
+}
 
 let formEl = document.getElementById("toDoForm");
 let listEl = document.getElementById("lists");
@@ -27,6 +31,9 @@ formEl.addEventListener("submit", (event) => {
             </div>
         `;
     listEl.innerHTML += toDoHTML;
+    allEntries.push(toDoHTML);
+    window.localStorage.setItem("storageKey", JSON.stringify(allEntries));
+
     let itemEls = document.querySelectorAll(`#card-${i} li`);
     for (let itemEl of itemEls) {
       itemEl.addEventListener("click", (event) => {
@@ -43,14 +50,21 @@ formEl.addEventListener("submit", (event) => {
     i++;
   }
 });
-//somehow dismiss the individual list
-let dismissList = document.getElementById("toDoDone");
-clearButton.addEventListener("click", (event) => {
-  console.log("Button clicked");
-});
 
 let clearButton = document.getElementById("clearButton");
 clearButton.addEventListener("click", (event) => {
   console.log("Button clicked");
   listEl.innerHTML = "";
+  localStorage.clear();
 });
+
+let dismissList = document.getElementById("toDoDone");
+clearButton.addEventListener("click", (event) => {
+  console.log("Button clicked");
+});
+
+// let huh = JSON.parse(localStorage.getItem('storageKey'))
+for (let entry of allEntries) {
+  console.log(entry);
+  formEl.innerHTML += entry;
+}
