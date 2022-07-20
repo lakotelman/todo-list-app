@@ -1,6 +1,8 @@
 let i = 0;
 let allEntries = [];
-
+if (localStorage.getItem("storageKey")) {
+  allEntries = JSON.parse(localStorage.getItem("storageKey"));
+}
 
 let formEl = document.getElementById("toDoForm");
 let listEl = document.getElementById("lists");
@@ -28,10 +30,9 @@ formEl.addEventListener("submit", (event) => {
                 </div>
             </div>
         `;
-    // listEl.innerHTML += toDoHTML;
-    allEntries.push(toDoHTML)
-    window.localStorage.setItem('storageKey', JSON.stringify(allEntries));
-
+    listEl.innerHTML += toDoHTML;
+    allEntries.push(toDoHTML);
+    window.localStorage.setItem("storageKey", JSON.stringify(allEntries));
 
     let itemEls = document.querySelectorAll(`#card-${i} li`);
     for (let itemEl of itemEls) {
@@ -57,10 +58,10 @@ clearButton.addEventListener("click", (event) => {
   listEl.innerHTML = "";
 });
 
-let huh = JSON.parse(localStorage.getItem('storageKey'))
-for(let entry of JSON.parse(localStorage.getItem("storageKey"))){
-console.log(entry)
-formEl.innerHTML += entry
+// let huh = JSON.parse(localStorage.getItem('storageKey'))
+for (let entry of JSON.parse(localStorage.getItem("storageKey"))) {
+  console.log(entry);
+  formEl.innerHTML += entry;
 }
 
 //How to remove individual listboxes
